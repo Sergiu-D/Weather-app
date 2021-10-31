@@ -1,55 +1,84 @@
 import React from "react";
 
-import useSWR from "swr";
+// Components
+import SearchInput from "./components/SearchInput";
+import MainContent from "./components/MainContent";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+// import useSWR from "swr";
+
+// const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function App() {
   const [location, setLocation] = React.useState({
-    latitude: 123,
-    longitude: 456,
+    loaded: false,
+    permission: false,
+    coordinates: {
+      lat: null,
+      lon: null,
+    },
   });
 
-  const geolocation = navigator.geolocation;
+  function getUserPermission() {
+    const geolocation = navigator.geolocation;
 
-  geolocation.getCurrentPosition(getGeolocationSuccess, getGeolocationError);
+    geolocation.getCurrentPosition(getGeolocationSuccess, getGeolocationError);
 
-  function getGeolocationSuccess(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+    function getGeolocationError(ev) {
+      setLocation((state) => ({
+        ...state,
+        loaded: true,
+        permission: false,
+      }));
+    }
 
-    console.log("Position", position);
+    function getGeolocationSuccess(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
-    return setLocation({
-      latitude: latitude,
-      longitude: longitude,
-    });
+      setLocation({
+        loaded: true,
+        permission: true,
+        coordinates: {
+          lat: latitude,
+          lon: longitude,
+        },
+      });
+    }
   }
 
-  function getGeolocationError() {
-    console.log("error!");
-  }
+  React.useEffect(() => {
+    getUserPermission();
+  }, []);
 
-  const locationURL = `https://api.openweathermap.org/data/2.5/find?lat=${location.latitude}&lon=${location.longitude}&cnt=5&appid=${process.env.REACT_APP_API_KEY}`;
+  // const locationURL = `https://api.openweathermap.org/data/2.5/find?lat=${location.latitude}&lon=${location.longitude}&cnt=5&appid=${process.env.REACT_APP_API_KEY}`;
 
-  const { data: locationData, error: locationDateError } = useSWR(
-    locationURL,
-    fetcher
-  );
+  // const { data: locationData, error: locationDateError } = useSWR(
+  //   locationURL,
+  //   fetcher
+  // );
 
-  const { data, error } = useSWR(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&exclude=minutely&appid=${process.env.REACT_APP_API_KEY}&units=metric`,
-    fetcher
-  );
+  // const { data, error } = useSWR(
+  //   `https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&exclude=minutely&appid=${process.env.REACT_APP_API_KEY}&units=metric`,
+  //   fetcher
+  // );
 
-  if (locationDateError) return <div>failed to load</div>;
-  if (!locationData) return <div>loading...</div>;
-  console.log("🚀 ~ file: App.js ~ line 47 ~ App ~ locationData", locationData);
+  // if (locationDateError) return <div>failed to load</div>;
+  // if (!locationData) return <div>loading...</div>;
+  // console.log("🚀 ~ file: App.js ~ line 47 ~ App ~ locationData", locationData);
 
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
+  // if (error) return <div>failed to load</div>;
+  // if (!data) return <div>loading...</div>;
 
-  return <div className="App">Weather app</div>;
+  console.log(location);
+
+  if (location.loaded && location.permission)
+    return (
+      <MainContent
+        lat={location.coordinates.lat}
+        lon={location.coordinates.lon}
+      />
+    );
+  if (!location.permission) return <SearchInput />;
 }
 
 export default App;
