@@ -78,7 +78,7 @@ function App() {
         lon={location.coordinates.lon}
       />
     );
-  if (!location.permission) return <SearchInput />;
+  if (!location.permission) return <SearchInput setLocation={setLocation} />;
 }
 
 export default App;
