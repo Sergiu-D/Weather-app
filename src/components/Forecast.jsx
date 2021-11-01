@@ -12,5 +12,11 @@ export default function Forecast({ lat, lon }) {
 
   console.log("Forcast data ", data);
 
-  return <div>Forcast: {data.current.temp}</div>;
+  return (
+    <div>
+      Forcast: {data.current.temp}
+      {/* <DarysForcast /> */}
+      {/* <HourForcast /> */}
+    </div>
+  );
 }
