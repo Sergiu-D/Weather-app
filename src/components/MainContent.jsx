@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import useSWR from "swr";
+
+// Components
+import Forecast from "./Forecast";
+import SearchInput from "./SearchInput";
 
 // Util
 import {
@@ -9,28 +13,45 @@ import {
   fetcher,
 } from "./util/dataQuery";
 
-export default function MainContent({ lat, lon }) {
-  const { data, error } = useSWR(mainDataQuery(lat, lon), fetcher);
+export default function MainContent({ lat, lon, setLocation }) {
+  const [index, setIndex] = useState(0);
 
   const { data: userLocation, error: errorUserLocation } = useSWR(
     userLocationByCoordinatesQuery(lat, lon),
     fetcher
   );
 
-  if (!data) return <h1>Loading Data...</h1>;
-  if (error) return <h1>Error!</h1>;
+  // if (!data) return <h1>Loading Data...</h1>;
+  // if (error) return <h1>Error!</h1>;
 
   if (!userLocation) return <h1>Loading User Location...</h1>;
   if (errorUserLocation) return <h1>Error!</h1>;
 
-  console.log("data", data);
+  const list = userLocation.list[index];
+  const latitude = list.coord.lat;
+  const longitude = list.coord.lon;
+
+  const handleIncreaseClick = () => {
+    if (index >= userLocation.list.length - 1) return setIndex(0);
+    return setIndex((prev) => prev + 1);
+  };
+
+  const handleDecreaseClick = () => {
+    if (index === 0) return setIndex(userLocation.list.length - 1);
+    return setIndex((prev) => prev - 1);
+  };
 
   return (
     <div>
       <h3>
-        {userLocation[0].name}{" "}
-        <span style={{ color: "orangered" }}>{userLocation[0].country}</span>{" "}
+        {list.name}{" "}
+        <span style={{ color: "orangered" }}>{list.sys.country}</span>{" "}
       </h3>
+      <button onClick={handleDecreaseClick}>Decrease</button>
+      <button onClick={handleIncreaseClick}>Increase</button>
+      <SearchInput setLocation={setLocation} />
+
+      <Forecast lat={latitude} lon={longitude} />
     </div>
   );
 }

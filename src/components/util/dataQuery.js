@@ -12,9 +12,10 @@ export const mainDataQuery = (lat, lon) => {
 };
 
 export const userLocationByCoordinatesQuery = (lat, lon) => {
-  const limit = 1;
+  const limit = 5;
 
-  const URL = `${API_URL}/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit${limit}&appid=${API_KEY}`;
+  const URL = `${API_URL}/data/2.5/find?lat=${lat}&lon=${lon}&cnt${limit}&appid=${API_KEY}`;
+  //api.openweathermap.org/data/2.5/find?lat=${latitude}&lon=${longitude}&cnt=5&appid
   return URL;
 };
 
