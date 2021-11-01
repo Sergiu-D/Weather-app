@@ -1,12 +1,8 @@
 import React from "react";
 
 // Components
-import SearchInput from "./components/SearchInput";
+import SearchLocationScreen from "./components/SearchLocationScreen";
 import MainContent from "./components/MainContent";
-
-// import useSWR from "swr";
-
-// const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function App() {
   const [location, setLocation] = React.useState({
@@ -58,7 +54,8 @@ function App() {
         setLocation={setLocation}
       />
     );
-  if (!location.permission) return <SearchInput setLocation={setLocation} />;
+  if (!location.permission)
+    return <SearchLocationScreen setLocation={setLocation} />;
 }
 
 export default App;

@@ -13,16 +13,14 @@ import {
   fetcher,
 } from "./util/dataQuery";
 
-export default function MainContent({ lat, lon, setLocation }) {
+export default function MainContent(props) {
+  const { lat, lon, setLocation } = props;
   const [index, setIndex] = useState(0);
 
   const { data: userLocation, error: errorUserLocation } = useSWR(
     userLocationByCoordinatesQuery(lat, lon),
     fetcher
   );
-
-  // if (!data) return <h1>Loading Data...</h1>;
-  // if (error) return <h1>Error!</h1>;
 
   if (!userLocation) return <h1>Loading User Location...</h1>;
   if (errorUserLocation) return <h1>Error!</h1>;

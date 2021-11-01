@@ -1,10 +1,17 @@
 import React from "react";
+
 import useSWR from "swr";
 
 // Util
 import { userLocationBySearchQuery, fetcher } from "./util/dataQuery";
 
-export default function SearchInput({ setLocation }) {
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearchLocation } from "@fortawesome/free-solid-svg-icons";
+
+export default function SearchInput(props) {
+  const { setLocation } = props;
+
   const [searchQuery, setSearchQuery] = React.useState("");
 
   const { data: place, error: errorPlace } = useSWR(
@@ -33,7 +40,6 @@ export default function SearchInput({ setLocation }) {
 
     return setSearchQuery(event.target[0].value);
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -42,7 +48,9 @@ export default function SearchInput({ setLocation }) {
         placeholder="Search by city and countries"
         invalid="false"
       />
-      <input type="submit" />
+      <button type="submit">
+        <FontAwesomeIcon icon={faSearchLocation} />
+      </button>
     </form>
   );
 }
