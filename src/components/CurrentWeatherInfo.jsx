@@ -15,7 +15,8 @@ export default function CurrentWeatherInfo(props) {
       <p>feels like: {feels_like}</p>
       <p>humidity: {humidity}</p>
       <p>wind speed: {wind_speed}</p>
-      <Icon icon={id} />
+      <Icon iconId={id} />
+      <p>{description}</p>
     </div>
   );
 }

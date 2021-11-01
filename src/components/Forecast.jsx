@@ -1,8 +1,11 @@
 import React from "react";
 
-import useSWR from "swr";
+// Components
+import DailyForecast from "./DailyForecast";
+import HourlyForecast from "./HourlyForecast";
 //Util
 import { mainDataQuery, fetcher } from "./util/dataQuery";
+import useSWR from "swr";
 
 export default function Forecast({ lat, lon }) {
   const { data, error } = useSWR(mainDataQuery(lat, lon), fetcher);
@@ -12,9 +15,8 @@ export default function Forecast({ lat, lon }) {
 
   return (
     <div>
-      Forcast: {data.current.temp}
-      {/* <DarysForcast /> */}
-      {/* <HourForcast /> */}
+      <DailyForecast days={data.daily} />
+      <HourlyForecast />
     </div>
   );
 }

@@ -27,8 +27,6 @@ export default function MainContent(props) {
   const latitude = city.coord.lat;
   const longitude = city.coord.lon;
 
-  console.log(city);
-
   return (
     <div>
       <CurrentInfo
