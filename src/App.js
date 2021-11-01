@@ -1,5 +1,7 @@
 import React from "react";
 
+import "weather-icons/css/weather-icons.min.css";
+
 // Components
 import SearchLocationScreen from "./components/SearchLocationScreen";
 import MainContent from "./components/MainContent";
