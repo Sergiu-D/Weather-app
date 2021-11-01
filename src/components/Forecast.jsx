@@ -10,8 +10,6 @@ export default function Forecast({ lat, lon }) {
   if (!data) return <h1>Loading Data...</h1>;
   if (error) return <h1>Error!</h1>;
 
-  console.log("Forcast data ", data);
-
   return (
     <div>
       Forcast: {data.current.temp}

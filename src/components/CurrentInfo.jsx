@@ -4,6 +4,7 @@ import React from "react";
 import SearchInput from "./SearchInput";
 import Location from "./Location";
 import Clock from "./Clock";
+import CurrentWeatherInfo from "./CurrentWeatherInfo";
 
 export default function CurrentInfo(props) {
   const { city, setLocation } = props;
@@ -12,8 +13,7 @@ export default function CurrentInfo(props) {
       <Location {...props} />
       <SearchInput setLocation={setLocation} />
       <Clock />
-      {/* Clock  */}
-      {/* CurrentWeather  */}
+      <CurrentWeatherInfo city={city} />
     </div>
   );
 }
