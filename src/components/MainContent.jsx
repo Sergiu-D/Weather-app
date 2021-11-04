@@ -25,7 +25,7 @@ export default function MainContent(props) {
         <Loading loadingMessage="Loading location..." />
       </main>
     );
-  if (errorUserLocation) return <h1>Error!</h1>;
+  if (errorUserLocation) return;
 
   // Iterate nearby cities
   const city = userLocation.list[citiesListIndex];

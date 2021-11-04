@@ -11,8 +11,8 @@ export default function SearchLocationScreen(props) {
     <main className="searchLocationContainer">
       <h1>Welcome!</h1>
       <h3>Check the current and forecast weather.</h3>
+
       <SearchInput {...props} />
-      <p>Ex: Rome, IT</p>
     </main>
   );
 }

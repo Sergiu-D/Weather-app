@@ -4,6 +4,8 @@
 }
 
 .location-city {
+  text-align: center;
+  min-width: 17ch;
   margin: 0 2rem;
   font-size: 3rem;
 }

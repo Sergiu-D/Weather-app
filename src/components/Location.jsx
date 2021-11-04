@@ -8,8 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function Location(props) {
-  const { city, citiesList, citiesListIndex, setCitiesListIndex, setLocation } =
-    props;
+  const { city, citiesList, citiesListIndex, setCitiesListIndex } = props;
 
   const cityName = city.name;
   const country = city.sys.country;

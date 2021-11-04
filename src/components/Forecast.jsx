@@ -13,7 +13,7 @@ export default function Forecast({ lat, lon }) {
   const { data, error } = useSWR(mainDataQuery(lat, lon), fetcher);
 
   if (!data) return <Loading loadingMessage="Loading data..." />;
-  if (error) return <h1>Error!</h1>;
+  if (error) return;
 
   return (
     <div>

@@ -21,7 +21,7 @@ function App() {
 
     geolocation.getCurrentPosition(getGeolocationSuccess, getGeolocationError);
 
-    function getGeolocationError(ev) {
+    function getGeolocationError() {
       setLocation((state) => ({
         ...state,
         loaded: true,

@@ -1,19 +1,22 @@
 .searchInputForm {
   display: flex;
-  justify-content: end;
+  margin-left: auto;
 }
 
 .searchInput {
   border: none;
   outline: none;
   background-color: var(--primary-cl-03);
-  /* opacity: 0.3; */
 
   border-radius: 8px 0 0 8px;
-
   padding: 1em 1.5em;
-
   color: var(--white-cl-10);
+
+  transition: all 0.2s ease-out;
+}
+
+.searchInput.invalid {
+  outline: 2px solid var(--alert-cl);
 }
 
 .searchInput::placeholder {
@@ -34,6 +37,17 @@
 
 .searchInputBtn:hover {
   color: var(--white-cl-10);
+}
+
+.message {
+  position: absolute;
+
+  left: 0;
+  bottom: -2rem;
+  color: red;
+  padding: 0.5rem;
+  text-align: start;
+  transition: all 0.2s ease-out;
 }
 
 @media only screen and (max-width: 640px) {
