@@ -5,7 +5,6 @@ import useSWR from "swr";
 // Components
 import CurrentInfo from "./CurrentInfo";
 import Forecast from "./Forecast";
-import SearchInput from "./SearchInput";
 
 // Util
 import { userLocationByCoordinatesQuery, fetcher } from "./util/dataQuery";
@@ -28,7 +27,7 @@ export default function MainContent(props) {
   const longitude = city.coord.lon;
 
   return (
-    <div>
+    <main className="main-content-wp">
       <CurrentInfo
         city={city}
         citiesList={userLocation.list}
@@ -38,6 +37,6 @@ export default function MainContent(props) {
       />
 
       <Forecast lat={latitude} lon={longitude} />
-    </div>
+    </main>
   );
 }

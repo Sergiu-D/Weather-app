@@ -1,5 +1,12 @@
 import React from "react";
 
+// CSS
+import "../css/location.css";
+
+// Icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+
 export default function Location(props) {
   const { city, citiesList, citiesListIndex, setCitiesListIndex, setLocation } =
     props;
@@ -18,12 +25,16 @@ export default function Location(props) {
     return setCitiesListIndex((prev) => prev - 1);
   };
   return (
-    <div>
-      <h3>
+    <div className="location-wp">
+      <button className="location-btn" onClick={handleDecreaseClick}>
+        <FontAwesomeIcon icon={faAngleLeft} className="arrow-icon" />
+      </button>
+      <h3 className="location-city">
         {cityName} <span style={{ color: "orangered" }}>{country}</span>{" "}
       </h3>
-      <button onClick={handleDecreaseClick}>Decrease</button>
-      <button onClick={handleIncreaseClick}>Increase</button>
+      <button className="location-btn" onClick={handleIncreaseClick}>
+        <FontAwesomeIcon icon={faAngleRight} className="arrow-icon" />
+      </button>
     </div>
   );
 }

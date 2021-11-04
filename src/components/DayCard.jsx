@@ -15,15 +15,21 @@ export default function DayCard(props) {
   // Get date
   const { weekday, day: dateDay } = date(dt);
 
+  const dayTempInt = Math.trunc(dayTemp);
+  const nightTempInt = Math.trunc(nightTemp);
+
   return (
-    <div style={{ display: "flex" }}>
-      <h4>
+    <div className="daily-forecast_card">
+      <h3>
         {weekday} <span>{dateDay}</span>
-      </h4>
-      <Icon iconId={id} />
-      <h5>{description}</h5>
-      <p>Day Temp: {dayTemp}</p>
-      <p>Night Temp: {nightTemp}</p>
+      </h3>
+      <div className="daily-forecast_card-description">
+        <Icon iconId={id} />
+        <h3>{description}</h3>
+      </div>
+      <h3 className="daily-forecast_card-temp">
+        {dayTempInt}&deg; <span>{nightTempInt}&deg;</span>
+      </h3>
     </div>
   );
 }

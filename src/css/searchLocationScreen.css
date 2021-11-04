@@ -1,0 +1,24 @@
+.searchLocationContainer {
+  width: 30vw;
+  padding: 8rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 15px 15px 10px #0000;
+  text-align: center;
+}
+
+.searchLocationContainer .searchInputForm {
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.searchLocationContainer .searchInputForm input {
+  width: 100%;
+}
+
+.searchLocationContainer h3 {
+  text-transform: none;
+}
+
+.searchLocationContainer p {
+  text-align: start;
+}

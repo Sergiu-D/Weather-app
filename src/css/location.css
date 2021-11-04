@@ -1,0 +1,37 @@
+.location-wp {
+  display: flex;
+  margin: 3rem auto;
+}
+
+.location-city {
+  margin: 0 2rem;
+  font-size: 3rem;
+}
+
+.location-btn {
+  border: 2px solid hsla(0, 100%, 100%, 0.3);
+  border-radius: 50%;
+  background-color: transparent;
+
+  cursor: pointer;
+
+  margin: auto 0;
+
+  transition: border 0.2s ease;
+}
+
+.location-btn:hover {
+  border: 2px solid hsla(0, 100%, 100%, 0.6);
+}
+
+.location-btn:hover .icon {
+  color: hsla(0, 100%, 100%, 0.8);
+}
+
+.arrow-icon {
+  font-size: 2rem;
+  padding: 0.2em;
+  color: hsla(0, 100%, 100%, 0.3);
+
+  transition: color 0.2s ease-in-out;
+}

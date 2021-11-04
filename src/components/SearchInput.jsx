@@ -2,6 +2,9 @@ import React from "react";
 
 import useSWR from "swr";
 
+// css
+import "../css/searchInput.css";
+
 // Util
 import { userLocationBySearchQuery, fetcher } from "./util/dataQuery";
 
@@ -41,14 +44,15 @@ export default function SearchInput(props) {
     return setSearchQuery(event.target[0].value);
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="searchInputForm" onSubmit={handleSubmit}>
       <input
         type="text"
         id="input"
         placeholder="Search by city and countries"
         invalid="false"
+        className="searchInput"
       />
-      <button type="submit">
+      <button type="submit" className="searchInputBtn">
         <FontAwesomeIcon icon={faSearchLocation} />
       </button>
     </form>

@@ -1,0 +1,62 @@
+.daily-forecast-wp {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+
+  gap: 2rem;
+}
+
+.daily-forecast_card {
+  flex: 0 1 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(
+    -45deg,
+    var(--primary-cl-07),
+    var(--secondary-card-cl-07) 80%
+  );
+  margin-top: 3rem;
+  padding: 1rem;
+}
+
+.daily-forecast_card-temp {
+  font-size: 2rem;
+}
+
+.daily-forecast_card-temp span {
+  font-size: 1.5rem;
+
+  color: #b4b4b4;
+}
+
+.daily-forecast_card .icon {
+  padding: 1rem 0;
+}
+
+@media only screen and (max-width: 640px) {
+  .daily-forecast-wp {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .daily-forecast_card {
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0 2rem;
+  }
+
+  .daily-forecast_card-description {
+    margin: 0 2rem 0 auto;
+
+    width: 7ch;
+    text-overflow: ellipsis;
+    white-space: wrap;
+  }
+
+  .daily-forecast_card-temp {
+    width: 5ch;
+  }
+}

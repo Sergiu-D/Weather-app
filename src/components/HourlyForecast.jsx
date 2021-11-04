@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-// import Chart from "chart.js";
-// import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Line } from "react-chartjs-2";
 import { extrema } from "./util/getMinMaxValues";
+
+// CSS
+import "../css/hourlyForecast.css";
 
 const data = {
   //   labels: ["January", "February", "March", "April", "May", "June", "July"],
 
   datasets: [
     {
-      label: "Hourly Forecast",
+      label: "Temperature",
       // backgroundColor: "rgba(255,99,132,0.2)",
       backgroundColor: "rgba(255,99,132,0.0)",
       borderColor: "orangered",
@@ -75,10 +76,10 @@ export default function HourlyForecast(props) {
   //   console.log(`minMax`, minMax, graphData.datasets[0].data);
 
   return (
-    <div>
-      <h2>Bar Example (custom size)</h2>
+    <div className="hourly-forecast">
+      <h2>Hourly forecast</h2>
 
-      <div style={{ position: "relative", height: "240px", width: "90%" }}>
+      <div className="hourly-forecast_chart">
         <Line
           data={graphData}
           // width={window.innerWidth - 100}

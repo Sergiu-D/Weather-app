@@ -16,7 +16,7 @@ export default function Forecast({ lat, lon }) {
   return (
     <div>
       <DailyForecast days={data.daily} />
-      <HourlyForecast />
+      <HourlyForecast hourly={data.hourly} />
     </div>
   );
 }

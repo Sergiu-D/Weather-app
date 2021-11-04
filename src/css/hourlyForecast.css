@@ -1,0 +1,12 @@
+.hourly-forecast {
+  margin-top: 3rem;
+}
+
+.hourly-forecast h2 {
+  text-align: center;
+}
+
+.hourly-forecast_chart {
+  width: 100%;
+  height: 24rem;
+}

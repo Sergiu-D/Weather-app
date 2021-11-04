@@ -1,0 +1,48 @@
+.current-info_location {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-info_data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 3rem 0;
+}
+
+.clock-wp {
+  font-family: "B612 Mono", monospace;
+  flex: 1;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.current-weather-info-wp {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.current-weather-info_description {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.current-weather-info_description i {
+  padding: 1.3rem 0;
+}
+
+.current-weather-info {
+  line-height: 2.5rem;
+}
+
+hr {
+  width: 6rem;
+  margin: 0;
+  transform: rotate(90deg);
+  color: var(--white-cl-02);
+}
