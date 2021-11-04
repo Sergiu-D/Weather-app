@@ -5,6 +5,7 @@ import useSWR from "swr";
 // Components
 import CurrentInfo from "./CurrentInfo";
 import Forecast from "./Forecast";
+import Loading from "./Loading";
 
 // Util
 import { userLocationByCoordinatesQuery, fetcher } from "./util/dataQuery";
@@ -18,7 +19,12 @@ export default function MainContent(props) {
     fetcher
   );
 
-  if (!userLocation) return <h1>Loading User Location...</h1>;
+  if (!userLocation)
+    return (
+      <main className="main-content-wp">
+        <Loading loadingMessage="Loading location..." />
+      </main>
+    );
   if (errorUserLocation) return <h1>Error!</h1>;
 
   // Iterate nearby cities

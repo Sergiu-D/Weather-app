@@ -22,6 +22,7 @@ body {
   font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
   color: #fff;
+  /* overflow-x: hidden; */
 }
 
 h1,
@@ -62,7 +63,12 @@ p {
 }
 
 .main-content-wp {
-  min-width: 65vw;
+  display: flex;
+  flex-direction: column;
+
+  min-width: 75vw;
+
+  min-height: 100vh;
 
   background: var(--bg-cl);
   padding: 3rem;
