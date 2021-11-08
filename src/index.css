@@ -117,8 +117,11 @@ p {
 }
 
 @media only screen and (max-width: 640px) {
+  #root {
+    padding: 0;
+  }
   .main-content-wp {
     width: 100vw;
-    padding: 5rem 0;
+    padding: 3rem 0;
   }
 }

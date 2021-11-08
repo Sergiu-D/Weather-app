@@ -46,3 +46,17 @@ hr {
   transform: rotate(90deg);
   color: var(--white-cl-02);
 }
+
+@media only screen and (max-width: 640px) {
+  hr {
+    display: none;
+  }
+  .current-info_data {
+    margin: 6rem 0;
+    flex-direction: column;
+  }
+
+  .clock-wp h1 {
+    font-size: 5rem;
+  }
+}

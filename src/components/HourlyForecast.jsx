@@ -18,7 +18,7 @@ const data = {
       hoverBackgroundColor: "rgba(255,99,132,0.4)",
       hoverBorderColor: "rgba(255,99,132,1)",
 
-      //   data: [65, 59, 80, 81, 56, 55, 40],
+      data: [65, 59, 80, 81, 56, 55, 40],
     },
   ],
 };
@@ -44,6 +44,10 @@ export default function HourlyForecast(props) {
 
   //NOTE copy of chart object
   const graphData = { ...data };
+  console.log(
+    "🚀 ~ file: HourlyForecast.jsx ~ line 47 ~ HourlyForecast ~ graphData",
+    graphData
+  );
 
   graphData.labels = [];
   graphData.datasets[0].data = [];
@@ -61,7 +65,6 @@ export default function HourlyForecast(props) {
     window.addEventListener("resize", listener);
 
     return () => {
-      console.log("cleanup");
       window.removeEventListener("resize", listener);
     };
   }, [numPoints]);
@@ -69,11 +72,12 @@ export default function HourlyForecast(props) {
   for (let i = 0; i < numPoints; i++) {
     // getHourlyTemp.push(hourly[i].temp);
     const formatttedDate = new Date(hourly[i].dt * 1000).getHours();
+
     graphData.labels.push(formatttedDate);
     graphData.datasets[0].data.push(hourly[i].temp);
   }
   const minMax = extrema(graphData.datasets[0].data, 0.5);
-  //   console.log(`minMax`, minMax, graphData.datasets[0].data);
+  // console.log(`minMax`, minMax, graphData.datasets[0].data);
 
   return (
     <div className="hourly-forecast">
@@ -97,6 +101,7 @@ export default function HourlyForecast(props) {
               datalabels: {
                 formatter: function (value, context) {
                   const index = context.dataIndex;
+                  const label = context.chart.data.labels[index];
 
                   // NOTE converting index to string
                   const isMax = minMax.maxlist.includes("" + index);
@@ -121,18 +126,18 @@ export default function HourlyForecast(props) {
               },
             },
 
-            // scales: {
-            //   yAxes: [
-            //     {
-            //       ticks: {
-            //         display: false,
-            //       },
-            //     },
-            //   ],
-            // },
-            // legend: {
-            //   display: false,
-            // },
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    display: false,
+                  },
+                },
+              ],
+            },
+            legend: {
+              display: false,
+            },
             maintainAspectRatio: false,
             responsive: true,
           }}
