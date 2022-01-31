@@ -26,8 +26,6 @@
 
 </li>
 
-<li><a  href="#usage">Usage</a></li>
-
 </ol>
 
 </details>
@@ -102,7 +100,7 @@ npm install
 
 ```.env
 
-REACT_APP_API_KEY = YOU'R API KEY
+REACT_APP_API_KEY = YOUR API KEY
 
 ```
 
